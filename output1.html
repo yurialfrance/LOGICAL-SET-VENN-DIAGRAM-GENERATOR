@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" href="YE Logo.png" type="image/png">
+
+<head>
+    <title>Logic Sets | 2 Sets</title>
+    <style>
+        /* CSS styles */
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    animation: backgroundAnimation 10s ease infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-color: #03024d;
+    }
+    25% {
+        background-color: #39024d;
+    }
+    50% {
+        background-color: #540c20;
+    }
+    75% {
+        background-color: #4b0e1f;
+    }
+    100% {
+        background-color: #03024d;
+    }
+}
+
+
+
+        /* CSS for the header */
+
+        header {
+            background: linear-gradient(to bottom, #f8f8f8, #8ecae6);
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* preloader */
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f8f8f8, #8ecae6);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .code-loader {
+            color: #120658;
+            font-family: Consolas, Menlo, Monaco, monospace;
+            font-weight: bold;
+            font-size: 100px;
+            opacity: 0.8;
+        }
+
+
+        .code-loader span {
+            display: inline-block;
+            animation: pulse_414 3s alternate infinite ease-in-out;
+        }
+
+        .code-loader span:nth-child(odd) {
+            animation-delay: 1.5s;
+            /* Half of the total animation duration */
+        }
+
+        @keyframes pulse_414 {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+
+        .logo {
+            max-width: 10px;
+            /* Adjust the max-width as desired */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .logo-left {
+            margin-left: 10px;
+
+        }
+
+        .logo-left {
+            margin-right: auto;
+        }
+
+        .logo-right {
+            margin-left: auto;
+        }
+
+        .logo-right>img {
+            margin-left: -10rem;
+            border-radius: 50%;
+        }
+
+        .header-text {
+            text-align: center;
+
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left {
+            width: 35%;
+            color: #f8f8f8;
+        }
+        .left h1{
+            color: #ffffff;
+
+        }
+        
+
+        .right {
+            width: 50%;
+            color: #ccc;
+        }
+
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #000000;
+    line-height: 1.5;
+    resize: vertical;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+textarea::placeholder {
+    color: #000000;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #d9ff00;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #2f8be0;
+    }
+    100% {
+        box-shadow: 0 0 20px #2f8be0;
+    }
+}
+
+.set-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.set-container>div {
+    margin-bottom: 20px;
+}
+
+
+#venn {
+    float: left;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1em;
+    line-height: 100px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    position: relative;
+    margin-bottom: 3rem;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.intersectionOfSet > .one {
+    background-color: #8ecae6;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.intersectionOfSet > .two::before {
+    position: absolute;
+    left: 10px;
+    top: 3rem;
+}
+
+.intersectionOfSet > .two {
+    background-color: rgba(255, 0, 0, 0.5);
+    margin-left: -100px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.differenceOfSet > .one {
+    background-color: #fc3c3c7e;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.differenceOfSet > .two::before {
+    position: absolute;
+    left: 10px;
+}
+
+.differenceOfSet > .two {
+    background-color: hsla(42, 88%, 51%, 0.624);
+    margin-left: -30px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #2f8be0;
+    }
+    100% {
+        box-shadow: 0 0 20px #2f8be0;
+    }
+}
+
+
+        #contentSpan {
+            float: left;
+            margin-top: 3rem;
+            margin-left: 1.5rem;
+        }
+        .logic-sets{
+            color:#ccc
+        }
+
+
+
+        .complementOfSet > .one {
+    background-color: rgba(255, 247, 9, 0.606);
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.complementOfSet > .two::before {
+    position: absolute;
+    left: 10px;
+}
+
+.complementOfSet > .two {
+    background-color: rgba(61, 226, 55, 0.5);
+    margin-left: -30px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.symmetricDifferenceOfSet > .one {
+    background-color: rgba(0, 0, 255, 0.537);
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.symmetricDifferenceOfSet > .two::before {
+    position: absolute;
+    left: 10px;
+}
+
+.symmetricDifferenceOfSet > .two {
+    background-color: rgba(174, 15, 206, 0.5);
+    margin-left: -30px;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #2f8be0;
+    }
+    100% {
+        box-shadow: 0 0 20px #2f8be0;
+    }
+}
+
+        .footer-box {
+            background: linear-gradient(to top, #44eefa, #24dae0);
+
+            text-align: center;
+            padding: 10PX;
+            position: bottom;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: content-box border-box;
+        }
+
+        .previous-button {
+            background-color: #afe3ff;
+            border: #ffffff;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            font-size: 15px;
+            margin: 15px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            border-right-width: 10px;
+            float: right;
+        }
+
+        /* button */
+        .button {
+            position: relative;
+            padding: 10px 20px;
+            border-radius: 7px;
+            border: 3px solid #e1af0b;
+            font-size: 14px;
+            margin-top: 5px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: transparent;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 0 0 0 transparent;
+            -webkit-transition: all 0.2s ease-in;
+            -moz-transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in;
+        }
+
+        .button:hover {
+            background: rgb(238, 108, 9);
+            box-shadow: 0 0 30px 5px rgba(236, 8, 0, 0.815);
+            -webkit-transition: all 0.2s ease-out;
+            -moz-transition: all 0.2s ease-out;
+            transition: all 0.2s ease-out;
+        }
+
+        button:hover::before {
+            -webkit-animation: sh02 0.5s 0s linear;
+            -moz-animation: sh02 0.5s 0s linear;
+            animation: sh02 0.5s 0s linear;
+        }
+
+        button::before {
+            content: '';
+            display: block;
+            width: 0px;
+            height: 86%;
+            position: absolute;
+            top: 7%;
+            left: 0%;
+            opacity: 0;
+            background: #fff;
+            box-shadow: 0 0 50px 30px #fff;
+            -webkit-transform: skewX(-20deg);
+            -moz-transform: skewX(-20deg);
+            -ms-transform: skewX(-20deg);
+            -o-transform: skewX(-20deg);
+            transform: skewX(-20deg);
+        }
+
+        @keyframes sh02 {
+            from {
+                opacity: 0;
+                left: 0%;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                left: 100%;
+            }
+        }
+
+        .button:active {
+            box-shadow: 0 0 0 0 transparent;
+            -webkit-transition: box-shadow 0.2s ease-in;
+            -moz-transition: box-shadow 0.2s ease-in;
+            transition: box-shadow 0.2s ease-in;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo logo-left">
+            <img src="https://plm.edu.ph/images/Seal/PLM_Seal_BOR-approved_2014.png" alt="Left Logo" style="width: 10rem; height: 10rem;">
+        </div>
+        <div class="header-text">
+            <h1>Pamantasan ng Lungsod ng Maynila</h1>
+            <h3>College of Engineering</h3>
+            <h4>Department of Information Technology</h4>
+            <h5>20222 - EIT 0122-1 - DISCRETE MATHEMATICS</h5>
+        </div>
+        <div class="logo logo-right">
+            <img src="site.jpg" alt="Right Logo" style="width: 10rem; height: 10rem;">
+        </div>
+    </header>
+
+    <div class="preloader">
+        <div class="code-loader">
+            <span>{</span><span>}</span>
+            Discrete Math
+            <br>
+            <p style="font-size: 30px; text-align: center;">Pamantasan ng Lungsod ng Maynila</p>
+            <p style="font-size: 15px; text-align: center;">Egipto, Encelan, Durante, Garcia, Espuerta</p>
+        </div>
+    </div>
+
+
+    <a class="previous-button" href="output2.html">3 Sets</a>
+    <div class="container">
+        <div class="left">
+            <a href="index.html"><h1>Logic Sets</h1></a>
+
+            <h2>First Set</h2>
+            <label for="firstSet">Enter elements of the first set:</label>
+            <textarea id="firstSet" placeholder="Enter elements, separated by space"></textarea>
+
+            <h2>Second Set</h2>
+            <label for="secondSet">Enter elements of the second set:</label>
+            <textarea id="secondSet" placeholder="Enter elements, separated by space"></textarea>
+
+            <button class="generate-button button" onclick="generateLogicSet()">Generate Logic Set</button>
+            <button class="clear-button button" onclick="clearAll()">Clear All</button>
+
+            <h2>Logic Set</h2>
+            <div id="logicSet"></div>
+        </div>
+
+        <div class="right">
+            <div class="two-column">
+                <div class="set-container">
+                    <div class="intersectionOfSet">
+                        <h3>Intersection of Sets (A ∩ B)</h3>
+                        <div id="venn" class="one"></div>
+                        <div id="venn" class="two"><span id="contentSpan"></span></div>
+                    </div>
+                </div>
+
+                <div class="differenceOfSet">
+                    <h3>Difference of Sets (A−B or B−A)</h3>
+                    <div id="venn" class="one"><span id="span-A-one">A</span></div>
+                    <div id="venn" class="two"><span id="span-B-one">B</span></div>
+                </div>
+
+                <div class="complementOfSet">
+                    <h3>Complement of Sets (A′ or B′)</h3>
+                    <div id="venn" class="one"><span id="span-A-two">A</span></div>
+                    <div id="venn" class="two"><span id="span-B-two">B</span></div>
+                </div>
+
+                <div class="symmetricDifferenceOfSet">
+                    <h3>Symmetric Difference of Sets</h3>
+                    <h4>A Δ B = (A - B) U (B - A)</h4>
+                    <div id="venn" class="one"><span id="span-A-three">A</span></div>
+                    <div id="venn" class="two"><span id="span-B-three">B</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function generateLogicSet() {
+  var firstSetInput = document.getElementById("firstSet").value;
+  var secondSetInput = document.getElementById("secondSet").value;
+
+  var firstSet = new Set(firstSetInput.split(" "));
+  var secondSet = new Set(secondSetInput.split(" "));
+
+  var universalSet = new Set([...firstSet, ...secondSet]);
+  var unionSet = new Set([...firstSet, ...secondSet]);
+  var diffSet1To2 = new Set([...firstSet].filter(x => !secondSet.has(x)));
+  var diffSet2To1 = new Set([...secondSet].filter(x => !firstSet.has(x)));
+  var symmetricDiffSet = new Set([...firstSet].filter(x => !secondSet.has(x)).concat([...secondSet].filter(x => !firstSet.has(x))));
+  var intersectionSet = new Set([...firstSet].filter(x => secondSet.has(x)));
+  var complementSetA = new Set([...universalSet].filter(x => !firstSet.has(x)));
+  var complementSetB = new Set([...universalSet].filter(x => !secondSet.has(x)));
+
+  var logicSetHTML = "<p><strong>Universal Set:</strong> " + Array.from(universalSet).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Union of Sets:</strong> " + Array.from(unionSet).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Difference of Set 1 to 2:</strong> " + Array.from(diffSet1To2).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Difference of Set 2 to 1:</strong> " + Array.from(diffSet2To1).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Symmetric Difference:</strong> " + Array.from(symmetricDiffSet).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Complement of Set A:</strong> " + Array.from(complementSetA).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Complement of Set B:</strong> " + Array.from(complementSetB).join(" ") + "</p>";
+  logicSetHTML += "<p><strong>Intersection of Sets:</strong> " + Array.from(intersectionSet).join(" ") + "</p>";
+
+  document.getElementById("logicSet").innerHTML = logicSetHTML;
+
+  //Intersection of Sets
+var contentSpan = document.getElementById('contentSpan');
+contentSpan.innerHTML = splitTextIntoRows(Array.from(intersectionSet).join(" , "));
+
+//Difference Sets
+var contentSpanOne = document.getElementById('span-A-one');
+contentSpanOne.innerHTML = splitTextIntoRows(Array.from(diffSet1To2).join(" , "));
+
+var contentSpanTwo = document.getElementById('span-B-one');
+contentSpanTwo.innerHTML = splitTextIntoRows(Array.from(diffSet2To1).join(" , "));
+
+//Complement of Sets
+var contentSpanThree = document.getElementById('span-A-two');
+contentSpanThree.innerHTML = splitTextIntoRows(Array.from(complementSetA).join(" , "));
+
+var contentSpanFour = document.getElementById('span-B-two');
+contentSpanFour.innerHTML = splitTextIntoRows(Array.from(complementSetB).join(" , "));
+
+//Symmetric Difference of Set
+var contentSpanFive = document.getElementById('span-A-three');
+contentSpanFive.innerHTML = splitTextIntoRows(Array.from(diffSet1To2).join(" , "));
+
+var contentSpanSix = document.getElementById('span-B-three');
+contentSpanSix.innerHTML = splitTextIntoRows(Array.from(diffSet2To1).join(" , "));
+
+function splitTextIntoRows(text) {
+  var words = text.split(" ");
+  var rows = [];
+  for (var i = 0; i < words.length; i += 2) {
+    var pair = words.slice(i, i + 2).join(" ");
+    rows.push(pair);
+  }
+  return rows.join("\n");
+}
+
+}
+
+
+    function clearAll() {
+  document.getElementById("firstSet").value = "";
+  document.getElementById("secondSet").value = "";
+  document.getElementById("logicSet").innerHTML = "";
+
+  
+
+  // Clear the changes made to the content of .intersectionOfSet > .two
+  var contentSpan = document.getElementById('contentSpan');
+  contentSpan.textContent = "0"; // Set the initial content value
+  var contentSpanOne = document.getElementById('span-A-one');
+  contentSpanOne.textContent = "A"; // Set the initial content value
+  var contentSpanTwo = document.getElementById('span-B-one');
+  contentSpanTwo.textContent = "B"; // Set the initial content value
+  var contentSpanThree = document.getElementById('span-A-two');
+  contentSpanThree.textContent = "A"; // Set the initial content value
+  var contentSpanFour = document.getElementById('span-B-two');
+  contentSpanFour.textContent = "B"; // Set the initial content value
+  var contentSpanFive = document.getElementById('span-A-three');
+  contentSpanFive.textContent = "A"; // Set the initial content value
+  var contentSpanSix = document.getElementById('span-B-three');
+  contentSpanSix.textContent = "B"; // Set the initial content value
+}
+
+// preloader
+window.addEventListener('load', function() {
+  var preloader = document.querySelector('.preloader');
+  setTimeout(function() {
+    preloader.style.display = 'none';
+  }, 2000); // Set the timeout duration to 3000 milliseconds (3 seconds)
+});
+
+    </script>
+    <div>
+        <footer>
+            <div class="body">
+                <div class="footer-box">
+                    <p> All RIGHTS RESERVED &copy; 2023 BSIT BLOCK 1 </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+
+</html>
