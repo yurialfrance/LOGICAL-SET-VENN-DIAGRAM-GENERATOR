@@ -486,7 +486,7 @@ button {
 
     //Intersection of All Sets
 var contentSpanOne = document.getElementById('span-Inter-three');
-contentSpanOne.textContent = splitTextIntoRows(Array.from(intersectionSetABC).join(" , "));
+contentSpanOne.textContent = splitTextIntoRows(Array.from(intersectionSetABC).join(" "));
 
 //Set A
 var contentSpanTwo = document.getElementById('span-A-one');
@@ -502,15 +502,15 @@ contentSpanFour.textContent = splitTextIntoRows(thirdSetInput);
 
 //A and B
 var contentSpanFive = document.getElementById('span-AndB-two');
-contentSpanFive.textContent = splitTextIntoRows(Array.from(intersectionSetAB).join(" , "));
+contentSpanFive.textContent = splitTextIntoRows(Array.from(intersectionSetAB).join(" "));
 
 //A and C
 var contentSpanSix = document.getElementById('span-AndC-two');
-contentSpanSix.textContent = splitTextIntoRows(Array.from(intersectionSetBC).join(" , "));
+contentSpanSix.textContent = splitTextIntoRows(Array.from(intersectionSetBC).join(" "));
 
 //B and C
 var contentSpanSeven = document.getElementById('span-BandC-two');
-contentSpanSeven.textContent = splitTextIntoRows(Array.from(intersectionSetBC).join(" , "));
+contentSpanSeven.textContent = splitTextIntoRows(Array.from(intersectionSetBC).join(" "));
 
 function splitTextIntoRows(text) {
   var words = text.split(" ");
